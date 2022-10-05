@@ -61,8 +61,36 @@ private:
 	Position m_basePos;
 	Position m_desPos;
 public:
-	CMirror() ;
-	~CMirror() ;
+	CMirror();
+	~CMirror();
+
+	int		GetType();
+	int		OnLButtonDown(UINT nFlags, const Position& pos);
+	int		OnMouseMove(UINT nFlags, const Position& pos);
+	int		OnRButtonDown(UINT nFlags, const Position& pos);
+
+	int		Cancel();
+};
+
+///////////////////////////////////////////////////////////////
+/**
+ * \modu CFillColor
+ * \ingroup ModifyCmd->CFill
+ * 
+ * \brief Fill the region with invarient single color
+ *
+ * Architect: Yixuan.Chen
+ * Owner: TODO DEV
+ * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
+ */
+class CFillColor : public CCommand
+{
+private:
+	Position m_basePos;
+	Position m_desPos;
+public:
+	CFillColor() ;
+	~CFillColor() ;
 	
 	int		GetType();
 	int		OnLButtonDown(UINT nFlags, const Position& pos) ;

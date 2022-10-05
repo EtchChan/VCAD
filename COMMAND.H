@@ -23,6 +23,20 @@ enum ECommandType	// 命令类
 	ctMove = 11,			// 移动
 	ctRotate = 12,			// 旋转
 	ctMirror = 13,			// 镜像
+	///////////////////////////////////////////////////////////////
+	/**
+	 * \modu CFill
+	 * \ingroup ModifyCmd
+	 *
+	 * \brief set command type id for Fill commands
+	 *
+	 * Architect: Yixuan.Chen
+	 * Owner: TODO DEV
+	 * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
+	 */
+	ctFillColor = 14,		// 颜色填充
+	ctFillPattern = 15,		// 图案填充
+
 	// ...其他创建类型
 //修改视图命令类
 	ctViewPan = 20 ,

@@ -116,6 +116,21 @@
 #define ID_MENUITEM32815                32815
 #define ID_INNERPT                      32816
 #define ID_CMD_COPY_BMP                 32817
+///////////////////////////////////////////////////////////////
+/**
+ * \modu CFill
+ * \ingroup ModifyCmd
+ * 
+ * \brief define command id
+ *
+ * Architect: Yixuan.Chen
+ * Owner: TODO DEV
+ * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
+ */
+#define ID_FILL                         32818
+#define ID_FILL_COLOR                   32819
+#define ID_FILL_PATTERN                 32820
+
 #define IDW_LINECOLOR                   59143
 #define IDW_LINEWIDTH                   59144
 #define IDW_LINESTYLE                   59145
@@ -130,7 +145,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        160
-#define _APS_NEXT_COMMAND_VALUE         32818
+#define _APS_NEXT_COMMAND_VALUE         32821
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           103
 #endif
