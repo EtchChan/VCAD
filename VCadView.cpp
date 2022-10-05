@@ -67,6 +67,21 @@ BEGIN_MESSAGE_MAP(CVCadView, CView)
 	ON_COMMAND(ID_MENUITEM32814, OnMenuitem32814)
 	ON_COMMAND(ID_MENUITEM32815, OnMenuitem32815)
 	ON_COMMAND(ID_INNERPT, OnInnerpt)
+	/**
+	 * \modu Fill
+	 * \ingroup ModifyCmd->CFill
+	 *
+	 * \brief mapping function between UI and command ID of Fill commands
+	 *
+	 * Architect: Yixuan.Chen
+	 * Owner: TODO DEV
+	 * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
+	 */
+	ON_COMMAND_RANGE(ID_FILL_COLOR,
+		ID_FILL_PATTERN, OnFillEntity)
+	ON_UPDATE_COMMAND_UI_RANGE(ID_FILL_COLOR,
+		ID_FILL_PATTERN, OnUpdateFillCommand)
+
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -375,12 +390,14 @@ void CVCadView::OnModifyEntity(UINT m_nID)
 			m_pCmd = new CMirror();
 			break;
 		}
+
 		default:
 			//删除
 			Erase() ;
 			break;
 	}
 }
+
 void CVCadView::OnUpdateModifyCommand(CCmdUI* pCmdUI)
 {
 	CVCadDoc* pDoc = GetDocument();
@@ -921,7 +938,7 @@ void CVCadView::DrawCoord(CDC *pDC)
 	pDC->Polygon(pts, 3);
 	pDC->SelectObject(pbrsh);
 
-	delete pts;
+	delete[] pts;
 	delete pnew;
 }
 
@@ -1589,4 +1606,86 @@ void CVCadView::OnInnerpt()
 {
 	OnCreateEntity(32816);
 	//区域识别
+}
+
+/**
+ * \modu Fill
+ * \ingroup ModifyCmd->CFill
+ *
+ * \brief create object of command and update command menu for Fill commands
+ *
+ * Architect: Yixuan.Chen
+ * Owner: TODO DEV
+ * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
+ */
+void CVCadView::OnFillEntity(UINT m_nID)
+{
+	CVCadDoc* pDoc = GetDocument();
+	ASSERT(pDoc);
+
+	// 如果当前状态存在命令，那么
+	// 1. 取消该命令的操作
+	// 2. 删除该命令对象
+	// 3. 将命令指针设为空
+	if (m_pCmd) {
+		m_pCmd->Cancel();
+		delete m_pCmd;
+		m_pCmd = NULL;
+	}
+
+	// 判断是否有实体图元被选中
+	if (pDoc->m_selectArray.GetSize() == 0)
+	{
+		CString	strError = _T("请首先选取图元");
+		AfxMessageBox(strError);
+		return;
+	}
+
+	switch (m_nID)
+	{
+		case ID_FILL_COLOR:
+		{// 颜色填充
+			m_pCmd = new CFillColor();
+			break;
+		}
+		case ID_FILL_PATTERN:
+		{// 图案填充
+			m_pCmd = new CFillPattern();
+			break;
+		}
+		default:
+			break;
+	}
+}
+
+void CVCadView::OnUpdateFillCommand(CCmdUI* pCmdUI)
+{
+	CVCadDoc* pDoc = GetDocument();
+	ASSERT(pDoc);
+
+	// 判断是否有实体图元被选中
+	if (pDoc->m_selectArray.GetSize() == 0)
+	{
+		pCmdUI->Enable(FALSE);
+		return;
+	}
+
+	int flag = 0;
+	switch (pCmdUI->m_nID)
+	{
+		case ID_FILL_COLOR:
+		{
+			if ((m_pCmd != NULL && m_pCmd->GetType() == ctFillColor))
+				flag = 1;
+			break;
+		}
+		case ID_FILL_PATTERN:
+		{
+			if ((m_pCmd != NULL && m_pCmd->GetType() == ctFillPattern))
+				flag = 1;
+			break;
+		}
+		default:
+			break;
+	}
 }

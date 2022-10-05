@@ -270,6 +270,7 @@
     <ClCompile Include="ELLIPSE.CPP" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FillColorCmd.cpp" />
+    <ClCompile Include="FillPatternCmd.cpp" />
     <ClCompile Include="FlawAddDlg.cpp" />
     <ClCompile Include="GearParamDlg.cpp" />
     <ClCompile Include="InterDlg.cpp" />

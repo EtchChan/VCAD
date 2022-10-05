@@ -1,7 +1,7 @@
 /**
  * \file FillColorCmd.cpp
  * \ingroup ModifyCmd->CFill
- * \brief implement class CFillColor
+ * \brief implement class CFillPattern
  * \description: TODO DEV
  *
  * Architect: Yixuan.Chen
@@ -9,9 +9,9 @@
  * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
  */
 
-/******************************************************************************/
-/*           Include headers of the STL(standard template library)            */
-/******************************************************************************/
+ /******************************************************************************/
+ /*           Include headers of the STL(standard template library)            */
+ /******************************************************************************/
 #include "stdafx.h"
 #include "math.h"
 
@@ -32,26 +32,26 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-CFillColor::CFillColor()
+CFillPattern::CFillPattern()
 	: m_basePos(0, 0), m_desPos(0, 0)
 {
 	m_nStep = 0;// 初始化操作步为 0
 }
-CFillColor::~CFillColor()
+CFillPattern::~CFillPattern()
 {
 }
-int	CFillColor::GetType()
+int	CFillPattern::GetType()
 {
-	return ctFillColor;
+	return ctFillPattern;
 }
-int	CFillColor::OnLButtonDown(UINT nFlags, const Position& pos)
+int	CFillPattern::OnLButtonDown(UINT nFlags, const Position& pos)
 {
 	m_nStep++;
 	switch (m_nStep)
 	{
-	/*
-	* \brief 单击鼠标左键确认填充
-	*/
+		/*
+		* \brief 单击鼠标左键确认填充
+		*/
 	case 1:
 		// 第一次单击鼠标左键时得到基点位置，并初步设定目标位置
 		m_basePos = m_desPos = pos;
@@ -95,7 +95,7 @@ int	CFillColor::OnLButtonDown(UINT nFlags, const Position& pos)
 /*
 * \brief
 */
-int	CFillColor::OnMouseMove(UINT nFlags, const Position& pos)
+int	CFillPattern::OnMouseMove(UINT nFlags, const Position& pos)
 {
 	// 用一静态变量nPreRefresh记录进入OnMouseMove状态时的刷新次数
 	static	int nPreRefresh = g_nRefresh;
@@ -161,7 +161,7 @@ int	CFillColor::OnMouseMove(UINT nFlags, const Position& pos)
 	return 0;
 }
 // 单击鼠标右键取消正在进行的操作
-int	CFillColor::OnRButtonDown(UINT nFlags, const Position& pos)
+int	CFillPattern::OnRButtonDown(UINT nFlags, const Position& pos)
 {
 	Position	prePos = m_desPos; // 得到上一个鼠标位置
 	if (m_nStep == 1) {
@@ -190,7 +190,7 @@ int	CFillColor::OnRButtonDown(UINT nFlags, const Position& pos)
 	return 0;
 }
 // 调用Cancel 函数取消本次操作
-int CFillColor::Cancel()
+int CFillPattern::Cancel()
 {
 	Position	prePos = m_desPos; // 得到上一个鼠标位置
 	if (m_nStep == 1) {

@@ -113,6 +113,19 @@ protected:
 	afx_msg void OnUpdateCreateCommand(CCmdUI* pCmdUI);
 	afx_msg void OnModifyEntity(UINT m_nID);
 	afx_msg void OnUpdateModifyCommand(CCmdUI* pCmdUI);
+	/**
+	 * \modu Fill
+	 * \ingroup ModifyCmd->CFill
+	 *
+	 * \brief prototype of mapping function
+	 *
+	 * Architect: Yixuan.Chen
+	 * Owner: TODO DEV
+	 * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
+	 */
+	afx_msg void OnFillEntity(UINT m_nID);
+	afx_msg void OnUpdateFillCommand(CCmdUI* pCmdUI);
+
 	// ”Õº±‰ªª√¸¡Ó
 	afx_msg void OnViewCommand(UINT m_nID);//
 

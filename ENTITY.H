@@ -92,6 +92,19 @@ public:
 	virtual BOOL GetSnapPos(Position& pos) { return FALSE; }
 
 	virtual void Serialize(CArchive& ar) ; // 图元对象串行化
+
+	/**
+	 * \modu Fill
+	 * \ingroup ModifyCmd->CFill
+	 *
+	 * \brief nest Fill commands as member function of entities
+	 *
+	 * Architect: Yixuan.Chen
+	 * Owner: TODO DEV
+	 * Last Reviewer: Yixuan.Chen || 2022-Oct-05 14:24
+	 */
+	virtual void FillColor(void){}
+
 };
 
 ////////////////////////////

@@ -100,6 +100,26 @@ public:
 	int		Cancel() ;
 } ;
 
+/*
+* \brief prototype of CFillPattern
+*/
+class CFillPattern : public CCommand
+{
+private:
+	Position m_basePos;
+	Position m_desPos;
+public:
+	CFillPattern();
+	~CFillPattern();
+
+	int		GetType();
+	int		OnLButtonDown(UINT nFlags, const Position& pos);
+	int		OnMouseMove(UINT nFlags, const Position& pos);
+	int		OnRButtonDown(UINT nFlags, const Position& pos);
+
+	int		Cancel();
+};
+
 ///////////////////////////////////////////////////////////////
 #endif // __cplusplus
 
