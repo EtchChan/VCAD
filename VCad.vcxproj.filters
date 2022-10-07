@@ -159,6 +159,9 @@
     <ClCompile Include="FillPatternCmd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Fill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="VCad.rc">
@@ -221,6 +224,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VCadView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fill.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

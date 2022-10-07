@@ -52,6 +52,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.8.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -269,6 +270,7 @@
     <ClCompile Include="ECT2DModelDlg.cpp" />
     <ClCompile Include="ELLIPSE.CPP" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Fill.cpp" />
     <ClCompile Include="FillColorCmd.cpp" />
     <ClCompile Include="FillPatternCmd.cpp" />
     <ClCompile Include="FlawAddDlg.cpp" />
@@ -314,6 +316,7 @@
     <ClInclude Include="CreateCmd.h" />
     <ClInclude Include="Dxf.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Fill.h" />
     <ClInclude Include="GearParamDlg.h" />
     <ClInclude Include="InterDlg.h" />
     <ClInclude Include="MainFrm.h" />
@@ -363,6 +366,7 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.8.targets" />
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
