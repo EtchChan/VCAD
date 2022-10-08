@@ -63,8 +63,9 @@ int	CFillColor::OnLButtonDown(UINT nFlags, const Position& pos)
 		for (n = g_pDoc->m_selectArray.GetSize(), i = 0; i < n; i++)
 		{
 			MEntity* pEntity = (MEntity*)g_pDoc->m_selectArray[i];
-			Foo(m_basePos, pEntity->GetColor());
+			FillColor(m_basePos, pEntity->GetColor());
 		}
+		g_pDoc->m_selectArray.RemoveAll();
 		m_nStep = 0;
 		Cancel();
 		break;
@@ -113,7 +114,8 @@ int	CFillColor::OnRButtonDown(UINT nFlags, const Position& pos)
 // 调用Cancel 函数取消本次操作
 int CFillColor::Cancel()
 {
-	m_nStep = 0; // 将操作步重置为 0 
+	m_nStep = 0; // 将操作步重置为 0
+	g_pDoc->m_selectArray.RemoveAll();
 	::Prompt("就绪"); // 等待提示新类型的命令操作
 	return 0;
 }

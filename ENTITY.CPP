@@ -91,7 +91,7 @@ MEntity::~MEntity()
 
 void MEntity::Init()
 {
-	m_color = g_CurColor;
+	m_color = RGB(255, 0, 0);
 	m_lineStyle = g_CurLineStyle;
 	m_lineWidth = g_CurLineWidth ;
 

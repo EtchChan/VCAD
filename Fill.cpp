@@ -12,7 +12,7 @@
 #include "Command.h"
 #include "ModifyCmd.h"
 
-int Foo(const Position& m_seed, const COLORREF& b_color)
+int FillColor(const Position& m_seed, const COLORREF& b_color)
 {
 	CDC* pDC = g_pView->GetDC();
 
@@ -21,7 +21,7 @@ int Foo(const Position& m_seed, const COLORREF& b_color)
 
 	int		n = GetROP2(pDC->GetSafeHdc());
 	CBrush brush;
-	brush.CreateSolidBrush(RGB(0,0,255));
+	brush.CreateSolidBrush(g_CurColor);
 	CBrush* pBrush = (CBrush*)pDC->SelectObject(&brush);
 	pDC->FloodFill(pt_seed.x, pt_seed.y, b_color);
 	pDC->SetROP2(n);
