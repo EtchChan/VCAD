@@ -56,7 +56,6 @@ int	CFillColor::OnLButtonDown(UINT nFlags, const Position& pos)
 	*/
 	case 1:
 	{
-		// 第一次单击鼠标左键时得到基点位置，并初步设定目标位置
 		m_basePos = m_desPos = pos;
 
 		int i, n;
@@ -64,6 +63,7 @@ int	CFillColor::OnLButtonDown(UINT nFlags, const Position& pos)
 		{
 			MEntity* pEntity = (MEntity*)g_pDoc->m_selectArray[i];
 			FillColor(m_basePos, pEntity->GetColor());
+			g_pDoc->SetModifiedFlag(TRUE);
 		}
 		g_pDoc->m_selectArray.RemoveAll();
 		m_nStep = 0;
@@ -96,7 +96,7 @@ int	CFillColor::OnMouseMove(UINT nFlags, const Position& pos)
 	switch (m_nStep)
 	{
 	case 0:
-		::Prompt("选择填充颜色，单击左键填充当前颜色：");
+		::Prompt("选择填充种子点：");
 		break;
 	default:
 		break;
@@ -116,7 +116,7 @@ int CFillColor::Cancel()
 {
 	m_nStep = 0; // 将操作步重置为 0
 	g_pDoc->m_selectArray.RemoveAll();
-	::Prompt("就绪"); // 等待提示新类型的命令操作
+	::Prompt("就绪："); // 等待提示新类型的命令操作
 	return 0;
 }
 
